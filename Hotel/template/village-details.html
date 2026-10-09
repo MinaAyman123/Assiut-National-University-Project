@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Details - VillaScape</title>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <button class="mobile-menu-toggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </button>
+        </div>
+    </nav>
+
+    <div class="village-details">
+        <div class="container-wide">
+            <!-- Header -->
+            <div style="padding: var(--space-6) 0;">
+                <h1 id="village-name" style="margin-bottom: var(--space-2);"></h1>
+                <div style="display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;">
+                    <div id="village-rating"></div>
+                    <span id="village-location" style="color: var(--color-gray-600);"></span>
+                </div>
+            </div>
+
+            <!-- Gallery -->
+            <div id="village-gallery" class="gallery-container">
+                <!-- Images will be loaded by JavaScript -->
+            </div>
+
+            <!-- Details and Booking -->
+            <div class="details-container">
+                <div class="details-main">
+                    <h2 style="margin-bottom: var(--space-4);">About this village</h2>
+                    <p id="village-description"
+                        style="line-height: var(--line-height-relaxed); color: var(--color-gray-700);"></p>
+
+                    <div
+                        style="display: flex; gap: var(--space-6); margin-top: var(--space-6); padding: var(--space-5); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                        <div>
+                            <strong id="village-capacity"></strong>
+                            <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Guests</div>
+                        </div>
+                        <div>
+                            <strong id="village-bedrooms"></strong>
+                            <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Bedrooms</div>
+                        </div>
+                        <div>
+                            <strong id="village-bathrooms"></strong>
+                            <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Bathrooms</div>
+                        </div>
+                    </div>
+
+                    <!-- Amenities -->
+                    <div style="margin-top: var(--space-10);">
+                        <h2 style="margin-bottom: var(--space-5);">Amenities</h2>
+                        <div id="amenities-grid" class="amenities-grid">
+                            <!-- Amenities will be loaded by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Reviews -->
+                    <div class="reviews-section">
+                        <h2 style="margin-bottom: var(--space-5);">Guest Reviews</h2>
+                        <div id="reviews-container">
+                            <!-- Reviews will be loaded by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Card (Sticky) -->
+                <div class="details-sidebar">
+                    <div class="booking-card">
+                        <div class="booking-price">
+                            <span class="booking-price-amount" id="price-amount"></span>
+                            <span class="booking-price-period">/ night</span>
+                        </div>
+
+                        <form id="booking-form">
+                            <div class="date-inputs">
+                                <div class="input-group" style="margin-bottom: 0;">
+                                    <label class="input-label">Check-in</label>
+                                    <input type="date" id="checkin" class="input-field" required>
+                                </div>
+                                <div class="input-group" style="margin-bottom: 0;">
+                                    <label class="input-label">Check-out</label>
+                                    <input type="date" id="checkout" class="input-field" required>
+                                </div>
+                            </div>
+
+                            <div class="guest-select">
+                                <label class="input-label">Guests</label>
+                                <select id="guests" class="input-field">
+                                    <option value="1">1 Guest</option>
+                                    <option value="2">2 Guests</option>
+                                    <option value="3">3 Guests</option>
+                                    <option value="4">4 Guests</option>
+                                    <option value="5">5 Guests</option>
+                                    <option value="6">6 Guests</option>
+                                    <option value="7">7 Guests</option>
+                                    <option value="8">8 Guests</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Reserve Now
+                            </button>
+                        </form>
+
+                        <div id="price-breakdown" class="price-breakdown" style="display: none;">
+                            <div class="price-row">
+                                <span id="base-price-label"></span>
+                                <span id="base-price-value"></span>
+                            </div>
+                            <div class="price-row" id="guest-surcharge-row" style="display: none;">
+                                <span>Guest surcharge</span>
+                                <span id="guest-surcharge-value"></span>
+                            </div>
+                            <div class="price-row">
+                                <span>Service fee</span>
+                                <span id="service-fee-value"></span>
+                            </div>
+                            <div class="price-total">
+                                <span>Total</span>
+                                <span id="total-price-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 VillaScape. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/data.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/booking.js"></script>
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/app.js"></script>
+
+    <script>
+        // Get village ID from URL
+        const villageId = getURLParameter('id');
+        if (!villageId) {
+            window.location.href = 'villages.html';
+        }
+
+        // Load village data
+        const village = getVillageById(villageId);
+        if (!village) {
+            window.location.href = 'villages.html';
+        }
+
+        // Populate village information
+        document.getElementById('village-name').textContent = village.name;
+        document.getElementById('village-rating').innerHTML = generateStarRating(village.rating) + ` (${village.reviews} reviews)`;
+        document.getElementById('village-location').innerHTML = `📍 ${village.location}`;
+        document.getElementById('village-description').textContent = village.description;
+        document.getElementById('village-capacity').textContent = village.capacity;
+        document.getElementById('village-bedrooms').textContent = village.bedrooms;
+        document.getElementById('village-bathrooms').textContent = village.bathrooms;
+        document.getElementById('price-amount').textContent = formatPrice(village.price);
+
+        // Set max guests
+        const guestsSelect = document.getElementById('guests');
+        guestsSelect.innerHTML = '';
+        for (let i = 1; i <= village.capacity; i++) {
+            guestsSelect.innerHTML += `<option value="${i}">${i} Guest${i > 1 ? 's' : ''}</option>`;
+        }
+
+        // Load gallery
+        const gallery = document.getElementById('village-gallery');
+        if (village.gallery && village.gallery.length > 0) {
+            gallery.innerHTML = village.gallery.map((img, index) => `
+        <img src="${img}" alt="${village.name}" class="gallery-image ${index === 0 ? 'gallery-main' : ''}">
+      `).join('');
+        } else {
+            gallery.innerHTML = `<img src="${village.image}" alt="${village.name}" class="gallery-image gallery-main">`;
+        }
+
+        // Load amenities
+        const amenitiesGrid = document.getElementById('amenities-grid');
+        amenitiesGrid.innerHTML = village.amenities.map(amenity => `
+      <div class="amenity-item">
+        <span style="font-size: 20px;">✓</span>
+        <span>${amenity}</span>
+      </div>
+    `).join('');
+
+        // Load reviews
+        const reviewsContainer = document.getElementById('reviews-container');
+        const reviews = getVillageReviews(villageId);
+        if (reviews.length > 0) {
+            reviewsContainer.innerHTML = reviews.map(review => `
+        <div class="review-card">
+          <div class="review-header">
+            <img src="${review.avatar}" alt="${review.userName}" class="reviewer-avatar">
+            <div>
+              <strong>${review.userName}</strong>
+              <div>${generateStarRating(review.rating, false)}</div>
+            </div>
+          </div>
+          <p style="color: var(--color-gray-700);">${review.comment}</p>
+          <div class="review-date">${formatDate(review.date)}</div>
+        </div>
+      `).join('');
+        } else {
+            reviewsContainer.innerHTML = '<p style="color: var(--color-gray-500);">No reviews yet. Be the first to review!</p>';
+        }
+
+        // Set min date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').min = today;
+        document.getElementById('checkout').min = today;
+
+        // Calculate price on date/guest change
+        function updatePriceCalculation() {
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = parseInt(document.getElementById('guests').value);
+
+            if (checkin && checkout) {
+                const pricing = calculateTotalPrice(village.price, checkin, checkout, guests);
+
+                document.getElementById('base-price-label').textContent = `${formatPrice(village.price)} × ${pricing.nights} night${pricing.nights > 1 ? 's' : ''}`;
+                document.getElementById('base-price-value').textContent = formatPrice(pricing.basePrice);
+
+                if (pricing.guestSurcharge > 0) {
+                    document.getElementById('guest-surcharge-row').style.display = 'flex';
+                    document.getElementById('guest-surcharge-value').textContent = formatPrice(pricing.guestSurcharge);
+                } else {
+                    document.getElementById('guest-surcharge-row').style.display = 'none';
+                }
+
+                document.getElementById('service-fee-value').textContent = formatPrice(pricing.serviceFee);
+                document.getElementById('total-price-value').textContent = formatPrice(pricing.total);
+                document.getElementById('price-breakdown').style.display = 'block';
+            }
+        }
+
+        document.getElementById('checkin').addEventListener('change', updatePriceCalculation);
+        document.getElementById('checkout').addEventListener('change', updatePriceCalculation);
+        document.getElementById('guests').addEventListener('change', updatePriceCalculation);
+
+        // Handle booking form submit
+        document.getElementById('booking-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = parseInt(document.getElementById('guests').value);
+
+            const result = createBooking(villageId, checkin, checkout, guests);
+
+            if (result.success) {
+                showToast('Booking created successfully!', 'success');
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            } else if (result.requireAuth) {
+                showToast('Please login to make a booking', 'info');
+                setTimeout(() => {
+                    window.location.href = `auth.html?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`;
+                }, 1500);
+            } else {
+                showToast(result.message, 'error');
+            }
+        });
+    </script>
+</body>
+
+</html>

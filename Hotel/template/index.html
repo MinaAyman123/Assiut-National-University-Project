@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover and book amazing tourist villages around the world">
+  <title>VillaScape - Discover Your Perfect Getaway</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/static/css/main.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  <link rel="stylesheet" href="/static/css/pages.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-logo">
+        <span>🏝️</span>
+        VillaScape
+      </a>
+
+      <ul class="navbar-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="villages.html">Villages</a></li>
+        <li><a href="add-villa.html">List Your Villa</a></li>
+        <li><a href="villages.html?featured=true">Offers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="navbar-actions">
+        <a href="auth.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="auth.html" class="btn btn-primary btn-sm">Sign Up</a>
+      </div>
+
+      <button class="mobile-menu-toggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="/static/assets/images/hero_background_1764037443889.png" alt="Beautiful coastal village" class="hero-background" onerror="this.style.display='none'">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <h1 class="hero-title animate-fade-in">Discover Your Perfect Getaway</h1>
+      <p class="hero-subtitle animate-fade-in">Explore stunning tourist villages around the world</p>
+
+      <!-- Search Bar -->
+      <form id="search-form" class="search-bar animate-slide-up">
+        <div class="search-input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <input type="text" id="search-location" class="search-input" placeholder="Where do you want to go?">
+        </div>
+
+        <div class="search-input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <input type="date" id="search-checkin" class="search-input" min="">
+        </div>
+
+        <div class="search-input-group">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <input type="date" id="search-checkout" class="search-input" min="">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Featured Villages -->
+  <section class="section bg-gray-50">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Destinations</h2>
+        <p class="section-subtitle">Handpicked luxury villages for unforgettable experiences</p>
+      </div>
+
+      <div id="featured-villages" class="grid grid-cols-3">
+        <!-- Villages will be loaded by JavaScript -->
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="villages.html" class="btn btn-primary btn-lg">View All Villages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Offers -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Special Offers</h2>
+        <p class="section-subtitle">Limited time deals on amazing destinations</p>
+      </div>
+
+      <div class="grid grid-cols-3">
+        <div class="card">
+          <div class="card-body">
+            <span class="badge badge-primary">30% OFF</span>
+            <h3 class="card-title">Early Bird Special</h3>
+            <p class="card-description">Book 60 days in advance and save up to 30% on your stay</p>
+            <a href="villages.html" class="btn btn-outline">Browse Villages</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <span class="badge badge-success">FREE NIGHT</span>
+            <h3 class="card-title">Extended Stay</h3>
+            <p class="card-description">Book 7 nights and get your 8th night completely free</p>
+            <a href="villages.html" class="btn btn-outline">Learn More</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <span class="badge badge-primary">20% OFF</span>
+            <h3 class="card-title">Last Minute Deals</h3>
+            <p class="card-description">Book within 7 days of check-in for exclusive discounts</p>
+            <a href="villages.html" class="btn btn-outline">View Deals</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section bg-gray-50">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Why Choose VillaScape</h2>
+        <p class="section-subtitle">Your trusted partner for unforgettable getaways</p>
+      </div>
+
+      <div class="grid grid-cols-3">
+        <div style="text-align: center;">
+          <div style="font-size: 48px; margin-bottom: var(--space-4);">✓</div>
+          <h4 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">Verified Properties</h4>
+          <p style="color: var(--color-gray-600);">All villages are personally inspected and verified for quality</p>
+        </div>
+
+        <div style="text-align: center;">
+          <div style="font-size: 48px; margin-bottom: var(--space-4);">💰</div>
+          <h4 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">Best Price Guarantee</h4>
+          <p style="color: var(--color-gray-600);">Find a better price? We'll match it or refund the difference</p>
+        </div>
+
+        <div style="text-align: center;">
+          <div style="font-size: 48px; margin-bottom: var(--space-4);">🌟</div>
+          <h4 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">24/7 Support</h4>
+          <p style="color: var(--color-gray-600);">Our dedicated team is always here to help you</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>VillaScape</h4>
+          <p
+            style="color: var(--color-gray-400); font-size: var(--font-size-sm); line-height: var(--line-height-relaxed);">
+            Discover and book the world's most beautiful tourist villages. Your perfect getaway awaits.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="villages.html">Browse Villages</a></li>
+            <li><a href="villages.html?featured=true">Special Offers</a></li>
+            <li><a href="auth.html">Login / Sign Up</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul class="footer-links">
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#help">Help Center</a></li>
+            <li><a href="#terms">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Newsletter</h4>
+          <p style="color: var(--color-gray-400); font-size: var(--font-size-sm); margin-bottom: var(--space-3);">
+            Subscribe to get special offers and travel inspiration
+          </p>
+          <input type="email" placeholder="Your email" class="input-field" style="margin-bottom: var(--space-2);">
+          <button class="btn btn-primary" style="width: 100%;">Subscribe</button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 VillaScape. All rights reserved. Made with ❤️ for travelers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/static/js/data.js"></script>
+  <script src="/static/js/auth.js"></script>
+  <script src="/static/js/booking.js"></script>
+  <script src="/static/js/utils.js"></script>
+  <script src="/static/js/app.js"></script>
+
+  <script>
+    // Set min date for date inputs to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('search-checkin').min = today;
+    document.getElementById('search-checkout').min = today;
+  </script>
+</body>
+
+</html>

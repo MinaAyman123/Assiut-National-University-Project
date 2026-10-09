@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Villa - VillaScape</title>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span>🏝️</span>
+                VillaScape
+            </a>
+
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="villages.html">Villages</a></li>
+                <li><a href="add-villa.html" class="active">List Your Villa</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <!-- Will be populated by JS -->
+            </div>
+
+            <button class="mobile-menu-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container-narrow" style="margin-top: 100px; margin-bottom: var(--space-12);">
+        <!-- Header -->
+        <div style="text-align: center; margin-bottom: var(--space-10);">
+            <h1 style="margin-bottom: var(--space-3);">List Your Villa</h1>
+            <p style="font-size: var(--font-size-xl); color: var(--color-gray-600);">
+                Share your beautiful property with travelers worldwide
+            </p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div style="display: flex; justify-content: center; margin-bottom: var(--space-10); gap: var(--space-6);">
+            <div style="text-align: center;">
+                <div
+                    style="width: 48px; height: 48px; background: var(--color-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2); font-weight: var(--font-semibold);">
+                    1</div>
+                <div style="font-size: var(--font-size-sm); color: var(--color-primary);">Property Details</div>
+            </div>
+            <div
+                style="width: 40px; height: 2px; background: var(--color-gray-200); align-self: center; margin-top: -20px;">
+            </div>
+            <div style="text-align: center;">
+                <div
+                    style="width: 48px; height: 48px; background: var(--color-gray-200); color: var(--color-gray-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2); font-weight: var(--font-semibold);">
+                    2</div>
+                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Review</div>
+            </div>
+            <div
+                style="width: 40px; height: 2px; background: var(--color-gray-200); align-self: center; margin-top: -20px;">
+            </div>
+            <div style="text-align: center;">
+                <div
+                    style="width: 48px; height: 48px; background: var(--color-gray-200); color: var(--color-gray-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-2); font-weight: var(--font-semibold);">
+                    3</div>
+                <div style="font-size: var(--font-size-sm); color: var(--color-gray-600);">Publish</div>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="add-villa-form" class="card" style="box-shadow: var(--shadow-lg);">
+            <div class="card-body" style="padding: var(--space-8);">
+
+                <!-- Basic Information -->
+                <h2
+                    style="margin-bottom: var(--space-6); padding-bottom: var(--space-4); border-bottom: 2px solid var(--color-gray-100);">
+                    Basic Information
+                </h2>
+
+                <div class="input-group">
+                    <label for="villa-name" class="input-label">Villa Name *</label>
+                    <input type="text" id="villa-name" class="input-field" placeholder="e.g., Sunset Paradise Villa"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label for="villa-description" class="input-label">Description *</label>
+                    <textarea id="villa-description" class="input-field" rows="5"
+                        placeholder="Describe your villa, its unique features, and what makes it special..." required
+                        style="min-height: 120px; resize: vertical;"></textarea>
+                </div>
+
+                <!-- Location -->
+                <h2
+                    style="margin: var(--space-8) 0 var(--space-6); padding-bottom: var(--space-4); border-bottom: 2px solid var(--color-gray-100);">
+                    Location
+                </h2>
+
+                <div class="input-group">
+                    <label for="villa-location" class="input-label">Location *</label>
+                    <input type="text" id="villa-location" class="input-field" placeholder="e.g., Santorini, Greece"
+                        required>
+                </div>
+
+                <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                    <div class="input-group">
+                        <label for="villa-latitude" class="input-label">Latitude (Optional)</label>
+                        <input type="number" id="villa-latitude" class="input-field" placeholder="e.g., 36.3932"
+                            step="0.0001">
+                    </div>
+                    <div class="input-group">
+                        <label for="villa-longitude" class="input-label">Longitude (Optional)</label>
+                        <input type="number" id="villa-longitude" class="input-field" placeholder="e.g., 25.4615"
+                            step="0.0001">
+                    </div>
+                </div>
+
+                <!-- Property Details -->
+                <h2
+                    style="margin: var(--space-8) 0 var(--space-6); padding-bottom: var(--space-4); border-bottom: 2px solid var(--color-gray-100);">
+                    Property Details
+                </h2>
+
+                <div class="grid grid-cols-2" style="gap: var(--space-4);">
+                    <div class="input-group">
+                        <label for="villa-category" class="input-label">Category *</label>
+                        <select id="villa-category" class="input-field" required>
+                            <option value="">Select category</option>
+                            <option value="coastal">Coastal</option>
+                            <option value="mountain">Mountain</option>
+                            <option value="tropical">Tropical</option>
+                            <option value="desert">Desert</option>
+                            <option value="countryside">Countryside</option>
+                            <option value="lakeside">Lakeside</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="villa-price" class="input-label">Price per Night (USD) *</label>
+                        <input type="number" id="villa-price" class="input-field" placeholder="e.g., 350" min="1"
+                            required>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3" style="gap: var(--space-4);">
+                    <div class="input-group">
+                        <label for="villa-capacity" class="input-label">Max Guests *</label>
+                        <input type="number" id="villa-capacity" class="input-field" placeholder="e.g., 6" min="1"
+                            max="20" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="villa-bedrooms" class="input-label">Bedrooms *</label>
+                        <input type="number" id="villa-bedrooms" class="input-field" placeholder="e.g., 3" min="1"
+                            max="15" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="villa-bathrooms" class="input-label">Bathrooms *</label>
+                        <input type="number" id="villa-bathrooms" class="input-field" placeholder="e.g., 2" min="1"
+                            max="10" required>
+                    </div>
+                </div>
+
+                <!-- Amenities -->
+                <h2
+                    style="margin: var(--space-8) 0 var(--space-6); padding-bottom: var(--space-4); border-bottom: 2px solid var(--color-gray-100);">
+                    Amenities
+                </h2>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3);">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="WiFi">
+                        WiFi
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Pool">
+                        Pool
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Air Conditioning">
+                        Air Conditioning
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Kitchen">
+                        Kitchen
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Parking">
+                        Parking
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Beach Access">
+                        Beach Access
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Ocean View">
+                        Ocean View
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Mountain View">
+                        Mountain View
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Fireplace">
+                        Fireplace
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Sauna">
+                        Sauna
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Spa">
+                        Spa Access
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="amenity" value="Restaurant">
+                        Restaurant
+                    </label>
+                </div>
+
+                <!-- Images -->
+                <h2
+                    style="margin: var(--space-8) 0 var(--space-6); padding-bottom: var(--space-4); border-bottom: 2px solid var(--color-gray-100);">
+                    Images
+                </h2>
+
+                <div class="input-group">
+                    <label class="input-label">Main Image URL *</label>
+                    <input type="url" id="villa-image" class="input-field"
+                        placeholder="https://example.com/villa-image.jpg" required>
+                    <small style="color: var(--color-gray-500); margin-top: var(--space-2); display: block;">
+                        Note: In production, this would be an image upload. For now, use an image URL.
+                    </small>
+                </div>
+
+                <!-- Submit -->
+                <div
+                    style="margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-gray-100);">
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Submit Villa for Review
+                    </button>
+                    <p
+                        style="text-align: center; margin-top: var(--space-4); font-size: var(--font-size-sm); color: var(--color-gray-600);">
+                        Your villa will be reviewed by our team within 24-48 hours
+                    </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 VillaScape. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/data.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/booking.js"></script>
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/app.js"></script>
+
+    <script>
+        // Require authentication
+        if (!isLoggedIn()) {
+            if (confirm('You need to be logged in to list a villa. Would you like to login now?')) {
+                window.location.href = 'auth.html?redirect=' + encodeURIComponent(window.location.pathname);
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('add-villa-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Get all amenities
+            const amenities = Array.from(document.querySelectorAll('input[name="amenity"]:checked'))
+                .map(cb => cb.value);
+
+            if (amenities.length === 0) {
+                showToast('Please select at least one amenity', 'error');
+                return;
+            }
+
+            // Create villa object
+            const villa = {
+                id: Date.now(),
+                name: document.getElementById('villa-name').value,
+                location: document.getElementById('villa-location').value,
+                description: document.getElementById('villa-description').value,
+                price: parseInt(document.getElementById('villa-price').value),
+                category: document.getElementById('villa-category').value,
+                capacity: parseInt(document.getElementById('villa-capacity').value),
+                bedrooms: parseInt(document.getElementById('villa-bedrooms').value),
+                bathrooms: parseInt(document.getElementById('villa-bathrooms').value),
+                image: document.getElementById('villa-image').value,
+                gallery: [document.getElementById('villa-image').value],
+                amenities: amenities,
+                rating: 0,
+                reviews: 0,
+                availability: true,
+                featured: false,
+                ownerId: getCurrentUser().id,
+                status: 'pending',
+                coordinates: {
+                    lat: parseFloat(document.getElementById('villa-latitude').value) || 0,
+                    lng: parseFloat(document.getElementById('villa-longitude').value) || 0
+                }
+            };
+
+            // Get existing villages
+            const villages = getVillages();
+            villages.push(villa);
+            localStorage.setItem('villages', JSON.stringify(villages));
+
+            // Save to owner's listings
+            let ownerVillas = JSON.parse(localStorage.getItem('ownerVillas') || '{}');
+            if (!ownerVillas[villa.ownerId]) {
+                ownerVillas[villa.ownerId] = [];
+            }
+            ownerVillas[villa.ownerId].push(villa.id);
+            localStorage.setItem('ownerVillas', JSON.stringify(ownerVillas));
+
+            showToast('Villa submitted successfully! Redirecting to your dashboard...', 'success');
+
+            setTimeout(() => {
+                window.location.href = 'owner-dashboard.html';
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>

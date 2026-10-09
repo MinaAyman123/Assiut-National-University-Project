@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - VillaScape</title>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/pages.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span>🏝️</span>
+                VillaScape
+            </a>
+
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="villages.html">Villages</a></li>
+                <li><a href="villages.html?featured=true">Offers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <!-- Will be populated by JS -->
+            </div>
+
+            <button class="mobile-menu-toggle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container container-wide">
+        <div class="dashboard-header">
+            <h1 class="dashboard-welcome" id="welcome-message">Welcome back!</h1>
+            <p style="opacity: 0.9;">Manage your bookings and profile</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <div class="profile-section">
+                    <img src="https://i.pravatar.cc/150?img=10" alt="User" class="profile-avatar">
+                    <h3 id="user-name" style="margin-bottom: var(--space-1);">User</h3>
+                    <p id="user-email" style="font-size: var(--font-size-sm); color: var(--color-gray-600);"></p>
+                </div>
+
+                <nav>
+                    <ul class="dashboard-nav">
+                        <li>
+                            <a href="#bookings" class="active" onclick="showSection('bookings')">
+                                📅 My Bookings
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#profile" onclick="showSection('profile')">
+                                👤 Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="logout(); return false;">
+                                🚪 Logout
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main>
+                <!-- Bookings Section -->
+                <div id="bookings-section">
+                    <h2 class="section-title">My Bookings</h2>
+
+                    <div id="bookings-list" class="bookings-list">
+                        <!-- Bookings will be loaded by JavaScript -->
+                    </div>
+
+                    <div id="no-bookings"
+                        style="display: none; text-align: center; padding: var(--space-10); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                        <div style="font-size: 64px; margin-bottom: var(--space-4);">🏖️</div>
+                        <h3 style="margin-bottom: var(--space-2);">No bookings yet</h3>
+                        <p style="color: var(--color-gray-600); margin-bottom: var(--space-5);">Start planning your next
+                            adventure!</p>
+                        <a href="villages.html" class="btn btn-primary">Browse Villages</a>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div id="profile-section" style="display: none;">
+                    <h2 class="section-title">Profile Settings</h2>
+
+                    <div class="card" style="max-width: 600px;">
+                        <div class="card-body">
+                            <form id="profile-form">
+                                <div class="input-group">
+                                    <label for="profile-name" class="input-label">Full Name</label>
+                                    <input type="text" id="profile-name" class="input-field" required>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="profile-email" class="input-label">Email</label>
+                                    <input type="email" id="profile-email" class="input-field" disabled>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 VillaScape. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/data.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script src="/static/js/booking.js"></script>
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/app.js"></script>
+
+    <script>
+        // Protect this page
+        requireAuth();
+
+        const currentUser = getCurrentUser();
+
+        // Update user info
+        document.getElementById('welcome-message').textContent = `Welcome back, ${currentUser.name}!`;
+        document.getElementById('user-name').textContent = currentUser.name;
+        document.getElementById('user-email').textContent = currentUser.email;
+        document.getElementById('profile-name').value = currentUser.name;
+        document.getElementById('profile-email').value = currentUser.email;
+
+        // Load bookings
+        function loadBookings() {
+            const bookings = getUserBookings(currentUser.id);
+            const container = document.getElementById('bookings-list');
+            const noBookings = document.getElementById('no-bookings');
+
+            if (bookings.length === 0) {
+                container.style.display = 'none';
+                noBookings.style.display = 'block';
+                return;
+            }
+
+            container.style.display = 'block';
+            noBookings.style.display = 'none';
+
+            container.innerHTML = bookings.map(booking => {
+                const village = getVillageById(booking.villageId);
+                const statusClass = booking.status === 'confirmed' ? 'status-confirmed' :
+                    booking.status === 'pending' ? 'status-pending' : 'status-cancelled';
+
+                return `
+          <div class="booking-card-full">
+            <div class="booking-content">
+              <img src="${village.image}" alt="${village.name}" class="booking-image">
+              
+              <div>
+                <div style="margin-bottom: var(--space-2);">
+                  <span class="status-badge ${statusClass}">${booking.status}</span>
+                </div>
+                <h3 style="margin-bottom: var(--space-2);">${village.name}</h3>
+                <p style="color: var(--color-gray-600); font-size: var(--font-size-sm); margin-bottom: var(--space-3);">
+                  📍 ${village.location}
+                </p>
+                <p style="font-size: var(--font-size-sm); margin-bottom: var(--space-1);">
+                  <strong>Check-in:</strong> ${formatDate(booking.checkIn)}
+                </p>
+                <p style="font-size: var(--font-size-sm); margin-bottom: var(--space-1);">
+                  <strong>Check-out:</strong> ${formatDate(booking.checkOut)}
+                </p>
+                <p style="font-size: var(--font-size-sm); margin-bottom: var(--space-1);">
+                  <strong>Guests:</strong> ${booking.guests}
+                </p>
+                <p style="font-size: var(--font-size-lg); font-weight: var(--font-semibold); margin-top: var(--space-3);">
+                  Total: ${formatPrice(booking.totalPrice)}
+                </p>
+              </div>
+              
+              <div class="booking-actions">
+                ${booking.status === 'confirmed' ? `
+                  <button class="btn btn-outline btn-sm" onclick="handleCancelBooking(${booking.id})">
+                    Cancel
+                  </button>
+                ` : ''}
+                <a href="village-details.html?id=${village.id}" class="btn btn-primary btn-sm">
+                  View Village
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+            }).join('');
+        }
+
+        // Cancel booking
+        function handleCancelBooking(bookingId) {
+            if (confirm('Are you sure you want to cancel this booking?')) {
+                const result = cancelBooking(bookingId);
+                if (result.success) {
+                    showToast('Booking cancelled successfully', 'success');
+                    loadBookings();
+                } else {
+                    showToast(result.message, 'error');
+                }
+            }
+        }
+
+        // Show section
+        function showSection(section) {
+            document.getElementById('bookings-section').style.display = section === 'bookings' ? 'block' : 'none';
+            document.getElementById('profile-section').style.display = section === 'profile' ? 'block' : 'none';
+
+            // Update active nav
+            document.querySelectorAll('.dashboard-nav a').forEach(a => a.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Profile form
+        document.getElementById('profile-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('profile-name').value;
+
+            const result = updateProfile({ name });
+            if (result.success) {
+                showToast('Profile updated successfully', 'success');
+                document.getElementById('user-name').textContent = name;
+                document.getElementById('welcome-message').textContent = `Welcome back, ${name}!`;
+            } else {
+                showToast(result.message, 'error');
+            }
+        });
+
+        // Load bookings on page load
+        loadBookings();
+    </script>
+</body>
+
+</html>
