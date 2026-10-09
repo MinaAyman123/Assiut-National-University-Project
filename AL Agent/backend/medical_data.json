@@ -1,0 +1,459 @@
+[
+  {
+    "disease": "Common Cold",
+    "symptoms": ["runny nose", "sneezing", "sore throat", "mild cough", "congestion"],
+    "doctor": "Family Medicine",
+    "emergency": false
+  },
+  {
+    "disease": "Influenza",
+    "symptoms": ["high fever", "body aches", "fatigue", "dry cough", "headache", "chills"],
+    "doctor": "Internal Medicine",
+    "emergency": false
+  },
+  {
+    "disease": "COVID-19",
+    "symptoms": ["fever", "dry cough", "loss of taste", "loss of smell", "fatigue", "difficulty breathing"],
+    "doctor": "Infectious Disease",
+    "emergency": true,
+    "analysis": {
+      "test_type": "PCR / Antigen",
+      "abnormal_findings": ["positive PCR", "positive antigen", "high CRP"],
+      "keywords": ["covid positive", "corona", "sars-cov-2"]
+    }
+  },
+  {
+    "disease": "Strep Throat",
+    "symptoms": ["sore throat", "pain when swallowing", "fever", "swollen tonsils", "white patches"],
+    "doctor": "Otolaryngology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Throat Swab",
+      "abnormal_findings": ["positive strep", "group A streptococcus"],
+      "keywords": ["strep throat", "streptococcus", "throat infection"]
+    }
+  },
+  {
+    "disease": "Bronchitis",
+    "symptoms": ["persistent cough", "mucus production", "fatigue", "chest discomfort", "shortness of breath"],
+    "doctor": "Pulmonology",
+    "emergency": false
+  },
+  {
+    "disease": "Pneumonia",
+    "symptoms": ["high fever", "cough with phlegm", "chest pain", "difficulty breathing", "confusion"],
+    "doctor": "Pulmonology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Chest X-ray",
+      "abnormal_findings": ["infiltrates", "consolidation", "pleural effusion", "high WBC"],
+      "keywords": ["pneumonia", "lung infection", "chest xray abnormal"]
+    }
+  },
+  {
+    "disease": "Asthma Attack",
+    "symptoms": ["wheezing", "shortness of breath", "chest tightness", "coughing", "rapid breathing"],
+    "doctor": "Pulmonology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Peak Flow / Spirometry",
+      "abnormal_findings": ["low peak flow", "low FEV1", "low FEV1/FVC ratio"],
+      "keywords": ["asthma", "wheezing", "peak flow low"]
+    }
+  },
+  {
+    "disease": "Allergic Rhinitis",
+    "symptoms": ["sneezing", "runny nose", "itchy eyes", "nasal congestion", "watery eyes"],
+    "doctor": "Allergy and Immunology",
+    "emergency": false
+  },
+  {
+    "disease": "Sinusitis",
+    "symptoms": ["facial pain", "nasal congestion", "headache", "postnasal drip", "tooth pain"],
+    "doctor": "Otolaryngology",
+    "emergency": false
+  },
+  {
+    "disease": "Migraine",
+    "symptoms": ["severe headache", "nausea", "sensitivity to light", "sensitivity to sound", "aura"],
+    "doctor": "Neurology",
+    "emergency": false
+  },
+  {
+    "disease": "Tension Headache",
+    "symptoms": ["dull aching pain", "pressure around forehead", "tightness in neck", "sensitivity to light"],
+    "doctor": "Neurology",
+    "emergency": false
+  },
+  {
+    "disease": "Cluster Headache",
+    "symptoms": ["severe burning pain", "eye redness", "nasal congestion", "eye swelling", "restlessness"],
+    "doctor": "Neurology",
+    "emergency": false
+  },
+  {
+    "disease": "Iron Deficiency Anemia",
+    "symptoms": ["fatigue", "pale skin", "cold hands", "dizziness", "brittle nails", "shortness of breath"],
+    "doctor": "Hematology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "CBC",
+      "abnormal_findings": ["low hemoglobin", "low hematocrit", "low RBC", "low MCV", "low MCH"],
+      "keywords": ["hb low", "hemoglobin low", "anemia", "iron deficiency", "ferritin low"]
+    }
+  },
+  {
+    "disease": "Vitamin B12 Deficiency",
+    "symptoms": ["fatigue", "numbness in hands", "balance problems", "pale skin", "sore tongue"],
+    "doctor": "Hematology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Vitamin B12",
+      "abnormal_findings": ["low B12", "low vitamin B12"],
+      "keywords": ["b12 low", "b12 deficiency", "pernicious anemia"]
+    }
+  },
+  {
+    "disease": "Hypertension",
+    "symptoms": ["severe headache", "shortness of breath", "nosebleeds", "anxiety", "chest pain"],
+    "doctor": "Cardiology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Blood Pressure Monitor",
+      "abnormal_findings": ["high BP", "systolic >140", "diastolic >90"],
+      "keywords": ["hypertension", "high blood pressure", "bp high"]
+    }
+  },
+  {
+    "disease": "Hypotension",
+    "symptoms": ["dizziness", "blurred vision", "nausea", "fatigue", "confusion", "fainting"],
+    "doctor": "Cardiology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Blood Pressure Monitor",
+      "abnormal_findings": ["low BP", "systolic <90", "diastolic <60"],
+      "keywords": ["hypotension", "low blood pressure", "bp low"]
+    }
+  },
+  {
+    "disease": "Angina",
+    "symptoms": ["chest pain", "shoulder pain", "jaw pain", "shortness of breath", "sweating"],
+    "doctor": "Cardiology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "ECG / Stress Test",
+      "abnormal_findings": ["ST depression", "T wave inversion", "ischemia"],
+      "keywords": ["angina", "chest pain", "ecg abnormal"]
+    }
+  },
+  {
+    "disease": "Gastroenteritis",
+    "symptoms": ["diarrhea", "vomiting", "nausea", "abdominal pain", "fever", "headache"],
+    "doctor": "Gastroenterology",
+    "emergency": false
+  },
+  {
+    "disease": "Gastritis",
+    "symptoms": ["burning stomach pain", "nausea", "bloating", "belching", "loss of appetite"],
+    "doctor": "Gastroenterology",
+    "emergency": false
+  },
+  {
+    "disease": "GERD",
+    "symptoms": ["heartburn", "regurgitation", "chest pain", "difficulty swallowing", "chronic cough"],
+    "doctor": "Gastroenterology",
+    "emergency": false
+  },
+  {
+    "disease": "Peptic Ulcer",
+    "symptoms": ["burning stomach pain", "bloating", "heartburn", "nausea", "dark stool"],
+    "doctor": "Gastroenterology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Endoscopy",
+      "abnormal_findings": ["gastric ulcer", "duodenal ulcer", "bleeding", "H. pylori positive"],
+      "keywords": ["ulcer", "peptic ulcer", "h pylori", "dark stool"]
+    }
+  },
+  {
+    "disease": "Appendicitis",
+    "symptoms": ["abdominal pain right side", "nausea", "vomiting", "loss of appetite", "fever", "swollen abdomen"],
+    "doctor": "General Surgery",
+    "emergency": true,
+    "analysis": {
+      "test_type": "CT Scan / Ultrasound",
+      "abnormal_findings": ["enlarged appendix", "appendiceal wall thickening", "high WBC"],
+      "keywords": ["appendicitis", "appendix", "right lower quadrant pain"]
+    }
+  },
+  {
+    "disease": "Gallstones",
+    "symptoms": ["sudden right abdominal pain", "back pain", "nausea", "vomiting", "fever"],
+    "doctor": "General Surgery",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Ultrasound",
+      "abnormal_findings": ["gallstones", "thickened gallbladder wall", "sludge"],
+      "keywords": ["gallstones", "gallbladder", "biliary colic"]
+    }
+  },
+  {
+    "disease": "Urinary Tract Infection",
+    "symptoms": ["burning urination", "frequent urination", "cloudy urine", "pelvic pain", "fever"],
+    "doctor": "Urology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Urinalysis",
+      "abnormal_findings": ["high WBC in urine", "positive nitrite", "bacteria", "high RBC"],
+      "keywords": ["uti", "urinary tract infection", "burning urination", "urine infection"]
+    }
+  },
+  {
+    "disease": "Kidney Stones",
+    "symptoms": ["severe back pain", "painful urination", "pink urine", "nausea", "fever"],
+    "doctor": "Urology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "CT Scan",
+      "abnormal_findings": ["kidney stone", "ureter stone", "hydronephrosis"],
+      "keywords": ["kidney stone", "renal stone", "calculus", "flank pain"]
+    }
+  },
+  {
+    "disease": "Bladder Infection",
+    "symptoms": ["pelvic pressure", "painful urination", "frequent urination", "blood in urine", "cramping"],
+    "doctor": "Urology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Urinalysis",
+      "abnormal_findings": ["high WBC", "positive culture", "bacteria"],
+      "keywords": ["cystitis", "bladder infection", "urine infection"]
+    }
+  },
+  {
+    "disease": "Eczema",
+    "symptoms": ["dry skin", "itching", "red patches", "swelling", "crusting skin"],
+    "doctor": "Dermatology",
+    "emergency": false
+  },
+  {
+    "disease": "Psoriasis",
+    "symptoms": ["red patches", "silvery scales", "dry cracked skin", "itching", "joint swelling"],
+    "doctor": "Dermatology",
+    "emergency": false
+  },
+  {
+    "disease": "Acne",
+    "symptoms": ["whiteheads", "blackheads", "pimples", "cysts", "redness", "painful bumps"],
+    "doctor": "Dermatology",
+    "emergency": false
+  },
+  {
+    "disease": "Rheumatoid Arthritis",
+    "symptoms": ["joint pain", "joint swelling", "morning stiffness", "fatigue", "fever"],
+    "doctor": "Rheumatology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Blood Tests",
+      "abnormal_findings": ["positive RF", "high anti-CCP", "high ESR", "high CRP"],
+      "keywords": ["rheumatoid arthritis", "ra", "joint swelling", "rf positive"]
+    }
+  },
+  {
+    "disease": "Osteoarthritis",
+    "symptoms": ["joint pain", "stiffness", "loss of flexibility", "grating sensation", "bone spurs"],
+    "doctor": "Rheumatology",
+    "emergency": false
+  },
+  {
+    "disease": "Gout",
+    "symptoms": ["severe joint pain", "redness", "swelling", "heat in joint", "limited movement"],
+    "doctor": "Rheumatology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Blood / Joint Fluid",
+      "abnormal_findings": ["high uric acid", "urate crystals", "high ESR"],
+      "keywords": ["gout", "uric acid high", "joint pain big toe"]
+    }
+  },
+  {
+    "disease": "Type 1 Diabetes",
+    "symptoms": ["increased thirst", "frequent urination", "hunger", "weight loss", "fatigue", "blurred vision"],
+    "doctor": "Endocrinology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Blood Glucose / HbA1c",
+      "abnormal_findings": ["high glucose", "high HbA1c", "positive autoantibodies"],
+      "keywords": ["type 1 diabetes", "high sugar", "ketoacidosis", "insulin"]
+    }
+  },
+  {
+    "disease": "Type 2 Diabetes",
+    "symptoms": ["increased thirst", "frequent urination", "slow healing sores", "tingling hands", "dark patches", "fatigue", "blurred vision"],
+    "doctor": "Endocrinology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Blood Glucose / HbA1c",
+      "abnormal_findings": ["high fasting glucose", "high HbA1c >6.5", "high postprandial glucose"],
+      "keywords": ["diabetes", "high sugar", "hyperglycemia", "insulin resistance"]
+    }
+  },
+  {
+    "disease": "Hypothyroidism",
+    "symptoms": ["fatigue", "weight gain", "cold intolerance", "dry skin", "hair loss", "depression"],
+    "doctor": "Endocrinology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Thyroid Function Tests",
+      "abnormal_findings": ["high TSH", "low T4", "low T3"],
+      "keywords": ["hypothyroidism", "tsh high", "thyroid low", "hashimoto"]
+    }
+  },
+  {
+    "disease": "Hyperthyroidism",
+    "symptoms": ["weight loss", "rapid heartbeat", "anxiety", "tremors", "heat intolerance", "fatigue"],
+    "doctor": "Endocrinology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Thyroid Function Tests",
+      "abnormal_findings": ["low TSH", "high T4", "high T3"],
+      "keywords": ["hyperthyroidism", "tsh low", "thyroid high", "graves"]
+    }
+  },
+  {
+    "disease": "Conjunctivitis",
+    "symptoms": ["red eyes", "itchy eyes", "discharge", "tearing", "gritty feeling"],
+    "doctor": "Ophthalmology",
+    "emergency": false
+  },
+  {
+    "disease": "Cataracts",
+    "symptoms": ["cloudy vision", "sensitivity to light", "difficulty seeing at night", "fading colors"],
+    "doctor": "Ophthalmology",
+    "emergency": false
+  },
+  {
+    "disease": "Glaucoma",
+    "symptoms": ["severe eye pain", "nausea", "red eyes", "blurred vision", "halos around lights"],
+    "doctor": "Ophthalmology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Tonometry",
+      "abnormal_findings": ["high intraocular pressure", "high IOP >21 mmHg"],
+      "keywords": ["glaucoma", "high eye pressure", "optic nerve damage"]
+    }
+  },
+  {
+    "disease": "Otitis Media",
+    "symptoms": ["ear pain", "difficulty hearing", "fever", "fluid drainage", "irritability"],
+    "doctor": "Otolaryngology",
+    "emergency": false
+  },
+  {
+    "disease": "Depression",
+    "symptoms": ["sadness", "loss of interest", "fatigue", "sleep problems", "appetite changes", "anxiety"],
+    "doctor": "Psychiatry",
+    "emergency": false
+  },
+  {
+    "disease": "Generalized Anxiety Disorder",
+    "symptoms": ["restlessness", "fatigue", "difficulty concentrating", "irritability", "muscle tension", "sleep problems"],
+    "doctor": "Psychiatry",
+    "emergency": false
+  },
+  {
+    "disease": "Panic Attack",
+    "symptoms": ["racing heart", "sweating", "trembling", "shortness of breath", "chest pain", "nausea", "fear"],
+    "doctor": "Psychiatry",
+    "emergency": true
+  },
+  {
+    "disease": "Insomnia",
+    "symptoms": ["difficulty falling asleep", "waking at night", "early waking", "daytime fatigue", "irritability"],
+    "doctor": "Sleep Medicine",
+    "emergency": false
+  },
+  {
+    "disease": "Sciatica",
+    "symptoms": ["lower back pain", "leg pain", "numbness in leg", "tingling", "muscle weakness"],
+    "doctor": "Orthopedics",
+    "emergency": false
+  },
+  {
+    "disease": "Herniated Disc",
+    "symptoms": ["back pain", "arm pain", "leg pain", "numbness", "muscle weakness"],
+    "doctor": "Orthopedics",
+    "emergency": true,
+    "analysis": {
+      "test_type": "MRI",
+      "abnormal_findings": ["disc herniation", "disc bulge", "nerve compression"],
+      "keywords": ["herniated disc", "slipped disc", "disc bulge", "back pain"]
+    }
+  },
+  {
+    "disease": "Fracture",
+    "symptoms": ["severe pain", "swelling", "bruising", "deformity", "inability to move"],
+    "doctor": "Orthopedics",
+    "emergency": true,
+    "analysis": {
+      "test_type": "X-ray",
+      "abnormal_findings": ["fracture line", "bone break", "displacement", "non-displaced fracture"],
+      "keywords": ["fracture", "broken bone", "xray shows fracture"]
+    }
+  },
+  {
+    "disease": "Meningitis",
+    "symptoms": ["severe headache", "stiff neck", "fever", "confusion", "sensitivity to light", "nausea"],
+    "doctor": "Neurology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Lumbar Puncture",
+      "abnormal_findings": ["high WBC in CSF", "low glucose", "high protein", "positive culture"],
+      "keywords": ["meningitis", "stiff neck", "csf abnormal", "bacterial meningitis"]
+    }
+  },
+  {
+    "disease": "Stroke",
+    "symptoms": ["sudden numbness", "confusion", "trouble speaking", "vision problems", "loss of balance", "severe headache"],
+    "doctor": "Neurology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "CT Scan / MRI",
+      "abnormal_findings": ["brain hemorrhage", "ischemic stroke", "clot", "bleeding"],
+      "keywords": ["stroke", "brain attack", "cva", "hemiplegia", "facial droop"]
+    }
+  },
+  {
+    "disease": "Seizure",
+    "symptoms": ["uncontrollable jerking", "loss of consciousness", "confusion", "staring spell", "fear"],
+    "doctor": "Neurology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "EEG",
+      "abnormal_findings": ["epileptiform discharges", "spike waves", "slow waves"],
+      "keywords": ["seizure", "epilepsy", "convulsion", "eeg abnormal"]
+    }
+  },
+  {
+    "disease": "Kidney Failure",
+    "symptoms": ["decreased urination", "swelling legs", "fatigue", "shortness of breath", "confusion", "nausea"],
+    "doctor": "Nephrology",
+    "emergency": true,
+    "analysis": {
+      "test_type": "Blood Tests",
+      "abnormal_findings": ["high creatinine", "high BUN", "high potassium", "low GFR"],
+      "keywords": ["kidney failure", "renal failure", "high creatinine", "low gfr"]
+    }
+  },
+  {
+    "disease": "Liver Cirrhosis",
+    "symptoms": ["fatigue", "easy bruising", "yellow skin", "itching", "swelling abdomen", "weight loss"],
+    "doctor": "Hepatology",
+    "emergency": false,
+    "analysis": {
+      "test_type": "Liver Function Tests",
+      "abnormal_findings": ["high ALT", "high AST", "high bilirubin", "low albumin"],
+      "keywords": ["cirrhosis", "liver disease", "high alt", "jaundice"]
+    }
+  }
+]
